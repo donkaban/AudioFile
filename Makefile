@@ -8,7 +8,7 @@ HEADERS = AudioFile.h
 # -------------------------------------------------------------------------------------------
 
 CXX          = arm-linux-gnueabi-g++
-CXX_FLAGS    = -c -Wall -Wextra -fno-permissive -std=c++0x  -marm -march=armv7-a $(COMMON_CXX_FLAGS) 
+CXX_FLAGS    = -c -Wall -Wextra -std=c++0x  -marm -march=armv7-a $(COMMON_CXX_FLAGS) 
 LINK_FLAGS   = -marm -march=armv7-a -pthread -lasound -lsndfile
 
 
