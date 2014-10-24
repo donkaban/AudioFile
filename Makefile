@@ -7,9 +7,9 @@ HEADERS = AudioFile.h
 
 # -------------------------------------------------------------------------------------------
 
-CXX          = arm-linux-gnueabi-g++
-CXX_FLAGS    = -c -Wall -Wextra -std=c++0x  -marm -march=armv7-a $(COMMON_CXX_FLAGS) 
-LINK_FLAGS   = -marm -march=armv7-a -pthread -lasound -lsndfile
+CXX          = arm-g++
+CXX_FLAGS    = -c -Wall -Wextra -std=c++11  $(COMMON_CXX_FLAGS) 
+LINK_FLAGS   = -pthread -lasound -lsndfile
 
 
 OBJECTS=$(SOURCES:.cpp=.o)
@@ -26,8 +26,6 @@ $(TARGET): $(OBJECTS) $(HEADERS)  Makefile
 clean:
 	rm -f $(TARGET)
 	rm -f $(OBJECTS)
-	rm -f *.bin
-	rm -f *.result*
 	
 	
 	

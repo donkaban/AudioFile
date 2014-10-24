@@ -8,18 +8,22 @@ class AudioFile
 public: 
     using raw_buf = std::vector<char>;
 
-    static void initAudioSystem();
-    static void closeAudioSystem();
-
+   
     AudioFile(const std::string &);
     virtual ~AudioFile();
     void play();
    
 private:
 
+    void init();
+    void close();
+    uint getChannels();
+    uint getRate();
+
+    std::string _filename;
     raw_buf  _buffer;
-    static uint _rate;
-    static uint _ch;
-    static snd_pcm_t    * pcm_hdl;
-    static snd_pcm_hw_params_t * params;
+    uint _rate;
+    uint _ch;
+    snd_pcm_t    * pcm_hdl;
+    snd_pcm_hw_params_t * params;
  };

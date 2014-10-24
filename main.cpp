@@ -1,4 +1,5 @@
 
+#include <thread>
 #include "AudioFile.h"
 
 
@@ -6,19 +7,20 @@ int main()
 {
     try
     {
-        AudioFile::initAudioSystem();
+   
+        std::thread player([&]()
+        {
+            AudioFile t1("harp.wav");
 
-        AudioFile t1("test1.wav");
-        AudioFile t2("test2.wav");
+            while(true)
+            { 
+                t1.play();
+                std::chrono::milliseconds dura(2000);
+                std::this_thread::sleep_for(dura);
+            }
+        });
+        player.join();   
 
-
-        t1.play();
-        t2.play();
-        
-
-
-        AudioFile::closeAudioSystem();
-        
         return 0;
     }
     catch(const std::exception &e)
